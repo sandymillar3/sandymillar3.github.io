@@ -28,15 +28,19 @@ map.on(L.Draw.Event.CREATED, function (e) {
 
     if (type === 'rectangle') {
         var bounds = layer.getBounds();
-        var rectangleCorners = 'Rectangle corners:\n' +
-                                'Upper right corner: ' + bounds.getNorthEast().toString() + '\n' +
-                                'Lower left corner: ' + bounds.getSouthWest().toString();
+        var llcrnrlat = bounds.getSouthWest().lat;
+        var urcrnrlat = bounds.getNorthEast().lat;
+        var llcrnrlon = bounds.getSouthWest().lng;
+        var urcrnrlon = bounds.getNorthEast().lng;
+        
+        var formattedCoords = `llcrnrlat=${llcrnrlat}, urcrnrlat=${urcrnrlat}, llcrnrlon=${llcrnrlon}, urcrnrlon=${urcrnrlon}`;
 
-        copyToClipboard(rectangleCorners);
+        copyToClipboard(formattedCoords);
     }
 
     drawnItems.addLayer(layer);
 });
+
 
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(function() {
