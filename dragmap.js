@@ -33,7 +33,7 @@ map.on(L.Draw.Event.CREATED, function (e) {
         var llcrnrlon = bounds.getSouthWest().lng;
         var urcrnrlon = bounds.getNorthEast().lng;
         
-        var formattedCoords = `llcrnrlat=${llcrnrlat}, urcrnrlat=${urcrnrlat}, llcrnrlon=${llcrnrlon}, urcrnrlon=${urcrnrlon}`;
+        var formattedCoords = `Lower left coordinates=${llcrnrlat}, ${llcrnrlon}  Upper right coordinates=${urcrnrlat}, ${urcrnrlon}`;
 
         copyToClipboard(formattedCoords);
     }
