@@ -28,11 +28,20 @@ map.on(L.Draw.Event.CREATED, function (e) {
 
     if (type === 'rectangle') {
         var bounds = layer.getBounds();
-        alert('Rectangle corners:\n' +
-              'NorthEast: ' + bounds.getNorthEast().toString() + '\n' +
-              'SouthWest: ' + bounds.getSouthWest().toString());
+        var rectangleCorners = 'Rectangle corners:\n' +
+                                'Upper right corner: ' + bounds.getNorthEast().toString() + '\n' +
+                                'Lower left corner: ' + bounds.getSouthWest().toString();
+
+        copyToClipboard(rectangleCorners);
     }
 
     drawnItems.addLayer(layer);
 });
 
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert("Rectangle corners copied to clipboard!");
+    }, function(err) {
+        console.error('Could not copy text: ', err);
+    });
+}
