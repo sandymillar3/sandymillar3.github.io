@@ -35,6 +35,8 @@ map.on(L.Draw.Event.CREATED, function (e) {
         
         var formattedCoords = `Lower left coordinates=${llcrnrlat}, ${llcrnrlon}  Upper right coordinates=${urcrnrlat}, ${urcrnrlon}`;
 
+        layer.bindPopup(formattedCoords).openPopup();
+
         copyToClipboard(formattedCoords);
     }
 
